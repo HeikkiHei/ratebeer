@@ -15,6 +15,5 @@ deploy:
     master: heikkiheibrews
     dev: heikkiheibrews-dev
   run:
-    - "rake db:migrate:reset"
-    - "rake db:seed"
+    - "rake db:migrate"
 
