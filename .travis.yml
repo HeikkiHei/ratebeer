@@ -7,10 +7,6 @@ before_install:
 - gem update --system
 - gem --version
 
-before_script:
-- bundle exec rake db:create
-- bundle exec rake db:migrate
-
 deploy:
   provider: heroku
   api_key:
@@ -18,4 +14,6 @@ deploy:
   app: 
     master: heikkiheibrews
     dev: heikkiheibrews-dev
-
+  run:
+    - "rake db:create"
+    - "rake db:migrate"
