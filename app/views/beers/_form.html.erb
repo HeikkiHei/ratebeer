@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :Name %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :style %>
-    <%= form.text_field :style %>
+    <%= form.label :Style %>
+    <%= form.select :style, options_for_select(@styles) %>
   </div>
 
   <div class="field">
-    <%= form.label :brewery_id %>
-    <%= form.number_field :brewery_id %>
+    <%= form.label :Brewery %>
+    <%= form.select :brewery_id, options_from_collection_for_select(@breweries, :id, :name) %>
   </div>
 
   <div class="actions">
