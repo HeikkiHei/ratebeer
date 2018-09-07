@@ -1,1 +1,13 @@
 language: ruby
+before_install:
+- gem update --system
+- gem --version
+install: gem install rails
+deploy:
+  provider: heroku
+  api_key:
+    secure: u2McADvhf0cNdigIYywgYisqJHhNkxEH0VD0toME1+aPKvgTNZZXpqnVkUDYnjh9lEiQiWcNeFTRNWK1mMj5fKSinXF0lNmhyHIZbG9yreZUN3EkIL0RLXEDjjafd3GVcFHKctq7eT+6QrCuKtIMwGKzcmlL+PbCR+cfjvQTcU6eI66LAGc/rnm6HRXFm6Hv3Fc3ORu+vU8Nd4vwt/AKCRsH6ZkB8OOeQJMCOkI5ryvBwZMRoo3R0sW37CCyZzbHDdayNkRVkjZKqvJrzo5Wxh246+xt11/ejVTtDgX7KF0jLAsidh+CxVTLcEzutuPooO2GDU5VaW5FCkFri2Zzk5dA/4SWrpzm31VirNwCxiDmx43yyMkKa4+FTuILWyitZW2CjQSUO7A+6+w5O93hJkcMKAY+uT3UJBoTbVz4MTnfPn05hAT6x4j3H7TxYVM7XQ5OTN/IM81sL+UZG6zfUiTELRu9DSBLIPhoQdJwxqyIoUS9/0CAzvjD3xWLuJSKrIf6U7m2fvecNY8A+OuOhEW5XYqc/G0WDC8xfQ8YK5ucA2AefvuYuZrVMr6Lx3B+3osIM3oj3J7Bl3vdjzqVKOD7h/IRbwdlEV5YcM09wlQSQiX6+hesuPKv5/MVZOpa6tG62pNWD9to2uqfURprUcDifI9Fi97BEstHFc93luY=
+  app: heikkiheibrews-dev
+  on:
+    repo: HeikkiHei/ratebeer
+    branch: week2
