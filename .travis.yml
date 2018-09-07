@@ -16,3 +16,7 @@ deploy:
     dev: heikkiheibrews-dev
   run:
     - "rake db:migrate"
+  run:
+    - "rake db:seed"
+    on: 
+      branch: dev
