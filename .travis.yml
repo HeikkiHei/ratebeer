@@ -17,4 +17,5 @@ deploy:
   run:
     - "rake db:migrate"
     if: branch = dev
+    - "rake db:migrate:reset"
     - "rake db:seed"
