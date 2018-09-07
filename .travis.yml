@@ -15,5 +15,4 @@ deploy:
     master: heikkiheibrews
     dev: heikkiheibrews-dev
   run:
-    - "rake db:create"
     - "rake db:migrate"
