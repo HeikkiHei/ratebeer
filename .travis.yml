@@ -15,4 +15,5 @@ deploy:
     master: heikkiheibrews
     dev: heikkiheibrews-dev
   run:
+    if: branch = master
     - "rake db:migrate"
