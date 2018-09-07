@@ -15,3 +15,4 @@ This application contains some extra steps compared to the course material, such
 | Week 1   |      3     |
 | Week 2   |      5     |
 | Fiddling |      3     |
+
