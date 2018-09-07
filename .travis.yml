@@ -1,22 +1,20 @@
 language: ruby
+
 notifications:
   email: false
+
 before_install:
 - gem update --system
 - gem --version
+
 deploy:
   provider: heroku
   api_key:
     secure: fpwYwCiGSWVNkSyAjlA4bBwx7glxwXMXb5LTVOFcqSNA6d6vmijh8tq54x4zcLLdcPG+DoYhhdcnXJcTR3bdYnEt+fgFDnNxDBY+j7kPrqCRCv1Z3PQn35E7/EBVQRPke1fJK7vZLeAw1p0M97v0FCpdk/pk2drgumQIyV4rUVgy0uSiB0FCjP4butrjbC96p9kad0rFFLlCtEjX1EBAVZxAHU2I4hFmD7QecoeThAMrs/438gKbK5upzwWN9m2/vpJUTVGfIf90oFab0A8pTQgDFeF5Dg9Rt92pp3MKmmTeJt50ab2jZoaDG8U4XOyz0TdZ/KUEHND79zFLHqKYW72A0MDtzBPMjNR9dntO1ELq40GDqy+N7VUc79Y11I5Z+2G/AT2LqOske/ilvXR/kMI4zfJuUz1s7buSdG+zkhhoC28ff1mi6xRkTuyHvW2ZGCI8tX1xvlI2MYeON0nm+bghJzDS/c9mlFakgwqcSSFyteE/nlZ6offJWY63Ri6iWFf/C1hBf5XlI6Q1ioNCCnEUzLYmQxsBxXliAOLXQ8U8LuJF623eCH+++3FoU+0VXNspi52bBWTfuFUJ4uZYFBiZWUURU4Zv82PjC4Edp70A2pFcAOuvB5yg5zTHuWKsG4UMfVUq8QTNwz0rCBLc0pwnLmJHuTPxwC9tqeHo7Jg=
-  on:
-    repo: HeikkiHei/ratebeer
-    branch: master
-    app: heikkiheibrews
-    run: rake db:migrate
-  on:
-    repo: HeikkiHei/ratebeer
-    branch: dev
-    app: heikkiheibrews-dev
-    run: 
-      - "rake db:migrate:reset"
-      - "rake db:seed"
+  app: 
+    master: heikkiheibrews
+    dev: heikkiheibrews-dev
+  run:
+    - "rake db:migrate:reset"
+    - "rake db:seed"
+
