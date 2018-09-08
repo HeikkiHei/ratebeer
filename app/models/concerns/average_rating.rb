@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module AverageRating
-    extend ActiveSupport::Concern
-    def average_rating
-        return self.ratings.average(:score)
-    end
+  extend ActiveSupport::Concern
+  def average_rating
+    ratings.average(:score)
+  end
 end

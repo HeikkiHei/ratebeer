@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class BeersController < ApplicationController
-  before_action :set_beer, only: [:show, :edit, :update, :destroy]
+  before_action :set_beer, only: %i[show edit update destroy]
 
   # GET /beers
   # GET /beers.json
@@ -9,20 +11,19 @@ class BeersController < ApplicationController
 
   # GET /beers/1
   # GET /beers/1.json
-  def show
-  end
+  def show; end
 
   # GET /beers/new
   def new
     @beer = Beer.new
     @breweries = Brewery.all
-    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    @styles = ['Weizen', 'Lager', 'Pale ale', 'IPA', 'Porter']
   end
 
   # GET /beers/1/edit
   def edit
     @breweries = Brewery.all
-    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    @styles = ['Weizen', 'Lager', 'Pale ale', 'IPA', 'Porter']
   end
 
   # POST /beers
@@ -66,13 +67,14 @@ class BeersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_beer
-      @beer = Beer.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def beer_params
-      params.require(:beer).permit(:name, :style, :brewery_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_beer
+    @beer = Beer.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def beer_params
+    params.require(:beer).permit(:name, :style, :brewery_id)
+  end
 end

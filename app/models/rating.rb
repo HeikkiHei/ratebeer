@@ -1,7 +1,9 @@
-class Rating < ApplicationRecord
-    belongs_to :beer
+# frozen_string_literal: true
 
-    def to_s
-        "#{beer.name} #{score}"
-    end
+class Rating < ApplicationRecord
+  belongs_to :beer
+
+  def to_s
+    "#{beer.name} #{score}"
+  end
 end
