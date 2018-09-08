@@ -1,1 +1,3 @@
-json.partial! "breweries/brewery", brewery: @brewery
+# frozen_string_literal: true
+
+json.partial! 'breweries/brewery', brewery: @brewery
