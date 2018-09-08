@@ -20,6 +20,7 @@ beer5 = b2.beers.create name: 'X Porter', style: 'Porter'
 beer6 = b3.beers.create name: 'Hefeweizen', style: 'Weizen'
 beer7 = b3.beers.create name: 'Helles', style: 'Lager'
 
+
 beer1.ratings.create score: 10
 beer1.ratings.create score: 25
 beer1.ratings.create score: 45
