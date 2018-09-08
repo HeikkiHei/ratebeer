@@ -20,25 +20,16 @@ beer5 = b2.beers.create name: 'X Porter', style: 'Porter'
 beer6 = b3.beers.create name: 'Hefeweizen', style: 'Weizen'
 beer7 = b3.beers.create name: 'Helles', style: 'Lager'
 
-
-beer1 = b1.beers.create name:"Iso 3", style:"Lager"
-beer2 = b1.beers.create name:"Karhu", style:"Lager"
-beer3 = b1.beers.create name:"Tuplahumala", style:"Lager"
-beer4 = b2.beers.create name:"Huvila Pale Ale", style:"Pale Ale"
-beer5 = b2.beers.create name:"X Porter", style:"Porter"
-beer6 = b3.beers.create name:"Hefeweizen", style:"Weizen"
-beer7 = b3.beers.create name:"Helles", style:"Lager"
-
-beer1.ratings.create score:10
-beer1.ratings.create score:25
-beer1.ratings.create score:45
-beer2.ratings.create score:100
-beer3.ratings.create score:-10
-beer3.ratings.create score:10
-beer4.ratings.create score:50
-beer4.ratings.create score:20
-beer5.ratings.create score:10
-beer6.ratings.create score:20
-beer6.ratings.create score:20
-beer6.ratings.create score:20
-beer6.ratings.create score:20
+beer1.ratings.create score: 10
+beer1.ratings.create score: 25
+beer1.ratings.create score: 45
+beer2.ratings.create score: 100
+beer3.ratings.create score: -10
+beer3.ratings.create score: 10
+beer4.ratings.create score: 50
+beer4.ratings.create score: 20
+beer5.ratings.create score: 10
+beer6.ratings.create score: 20
+beer6.ratings.create score: 20
+beer6.ratings.create score: 20
+beer6.ratings.create score: 20
