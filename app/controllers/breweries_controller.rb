@@ -77,7 +77,7 @@ class BreweriesController < ApplicationController
   private
 
   def authenticate
-    admin_accounts = { 'admin' => 'secret', 'pekka' => 'beer', 'arto' => 'foobar', 'matti' => 'ittam' }
+    admin_accounts = { 'pekka' => 'beer', 'arto' => 'foobar', 'matti' => 'ittam', 'vilma' => 'kangas' }
 
     authenticate_or_request_with_http_digest do |username|
       admin_accounts[username]
