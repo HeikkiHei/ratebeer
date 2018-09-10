@@ -1,0 +1,12 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - .pryrc
+    - bin/{setup,update}
+
+Metrics/LineLength:
+  Max: 85
+  IgnoredPatterns: ['# ', 'notice: ']
+  
+Documentation:
+  Enabled: false

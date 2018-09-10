@@ -18,7 +18,7 @@ beer3 = b1.beers.create name: 'Tuplahumala', style: 'Lager'
 beer4 = b2.beers.create name: 'Huvila Pale Ale', style: 'Pale Ale'
 beer5 = b2.beers.create name: 'X Porter', style: 'Porter'
 beer6 = b3.beers.create name: 'Hefeweizen', style: 'Weizen'
-beer7 = b3.beers.create name: 'Helles', style: 'Lager'
+b3.beers.create name: 'Helles', style: 'Lager' # No ratings, not a variable
 
 beer1.ratings.create score: 10
 beer1.ratings.create score: 25
