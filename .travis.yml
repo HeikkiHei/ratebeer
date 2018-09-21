@@ -16,4 +16,3 @@ deploy:
     dev: heikkiheibrews-dev
   run:
     - "rake db:migrate"
-

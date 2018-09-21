@@ -7,7 +7,6 @@ This project is for a course in the University of Helsinki, [WadRoR](https://git
 Production is usually running [here](https://heikkiheibrews.herokuapp.com)    
 Dev is usually running [here](https://heikkiheibrews-dev.herokuapp.com)    
 
-
 This application contains some extra steps compared to the course material, such as Travis CI
 
 |Exercises | Time Spent |
