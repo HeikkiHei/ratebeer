@@ -19,7 +19,6 @@
   <%= %"Beer has not yet been rated!" %>
 <% else %>
   <%= "Has "+ pluralize(@beer.ratings.count, "rating") +",  average #{@beer.average_rating}" %>
-
 <% end %>
 </p>
 

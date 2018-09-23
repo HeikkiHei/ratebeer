@@ -6,6 +6,9 @@ class Brewery < ApplicationRecord
   has_many :beers, dependent: :destroy
   has_many :ratings, through: :beers
 
+  validates :name, presence: true, allow_blank: false
+  validates :year, inclusion: { in: 1040..Time.now.year }, numericality: true
+
   def print_report
     puts name
     puts "established at year #{year}"
