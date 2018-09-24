@@ -10,4 +10,9 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true, length: 3..30
   validates :password, presence: true, length: { minimum: 4 }, confirmation: true, format: { with: /[A-Z]/, message: "Must contain capital letter (A-Z)" }
+
+  def favorite_beer
+    return nil if ratings.empty?
+    ratings.order(score: :desc).limit(1).first.beer
+  end
 end
