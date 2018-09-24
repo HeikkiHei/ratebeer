@@ -34,6 +34,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.8'
   gem 'sqlite3'
 end
 
