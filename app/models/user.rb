@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :beer_clubs, through: :memberships
 
-  validates :username, uniqueness: true, length: 3..30
-  validates :password, length: { minimum: 4 }, confirmation: true, format: { with: /[A-Z|ÅÄÖ]/, message: "Must contain capital letter (A-Z)" }
+  validates :username, presence: true, uniqueness: true, length: 3..30
+  validates :password, presence: true, length: { minimum: 4 }, confirmation: true, format: { with: /[A-Z]/, message: "Must contain capital letter (A-Z)" }
 end
