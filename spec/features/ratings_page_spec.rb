@@ -25,4 +25,20 @@ describe "Rating" do
     expect(beer1.ratings.count).to eq(1)
     expect(beer1.average_rating).to eq(15.0)
   end
+
+  context "homepage" do
+    it "should have zero ratings" do
+      visit ratings_path
+      expect(page).to have_content 'Number of ratings: 0' 
+    end
+
+    it "should contain count and list of ratings" do
+      FactoryBot.create(:rating, score: 20, user: user, beer: beer1)
+      FactoryBot.create(:rating, score: 15, user: user, beer: beer2)
+      visit ratings_path
+      expect(page).to have_content 'Number of ratings: 2' 
+      expect(page).to have_content 'iso 3 20' 
+      expect(page).to have_content 'Karhu 15' 
+    end
+  end
 end
