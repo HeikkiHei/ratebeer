@@ -1,49 +1,43 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
+<h2>
   <%= @user.username %>
-</p>
+</h2>
+
+<% if @user.ratings.empty? %>
+  <p>has not rate any beer</p>
+<% else %>
+  <p>
+    Has made <%= pluralize(@user.ratings.count, 'rating') %>, average rating <%= @user.average_rating %>
+  </p> 
+  <p>Favorite beer: <%= @user.favorite_beer.name %></p>
+  <p>Favorite brewery: <%= @user.favorite_brewery.name %></p>
+  <p>Preferred style: <%= @user.favorite_style %></p>
+<% end %>
 
 <p>
-<% if @user.ratings.empty? %>
-  <%= %"User has not yet rated!" %>
-<% else %>
-  <%= "Has "+ pluralize(@user.ratings.count, "rating") +",  average #{@user.average_rating}" %>
-<% end %>
+  <% if @user.beer_clubs.any? %>
+    member of 
+    <% @user.beer_clubs.each do |club| %>
+      <li> <%= link_to club.name, club %> </li>
+    <% end %>
+  <% end %>
 </p>
 
-<h2>Member of</h2>
+<h3>ratings</h3>
 
 <ul>
-    <% @user.memberships.each do |membership| %>
-        <li> <%= link_to membership.beer_club.name, membership.beer_club %> </li>
-    <% end %>
-</ul>
-
-<h2>Favorite beer</h2>
-<p><%= @user.favorite_beer %></p>
-
-<h2>Favorite style</h2>
-<p><%= @user.favorite_style %></p>
-
-<h2>Favorite brewery</h2>
-<p><%= @user.favorite_brewery %></p>
-
-<h2>Ratings</h2>
-
-<ul>
-  <% @user.ratings.each do |rating| %>
-    <li>
-      <%= rating %>
+ <% @user.ratings.each do |rating| %>
+   <li> <%= rating %> 
       <% if @user == current_user %>
           <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </li>
-  <% end %>
+      <% end %>   
+    </li>  
+ <% end %>
 </ul>
 
 <% if @user == current_user %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Edit', edit_user_path(@user) %>
+  <br>
   <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+ <% end %>

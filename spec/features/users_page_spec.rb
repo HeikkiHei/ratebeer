@@ -20,78 +20,17 @@ describe "User" do
 
       expect(current_path).to eq(signin_path)
       expect(page).to have_content 'Username and/or password mismatch'
-    end
+    end    
   end
 
   it "when signed up with good credentials, is added to the system" do
     visit signup_path
-    fill_in('user_username', with: 'Brian')
-    fill_in('user_password', with: 'Secret55')
-    fill_in('user_password_confirmation', with: 'Secret55')
+    fill_in('user_username', with:'Brian')
+    fill_in('user_password', with:'Secret55')
+    fill_in('user_password_confirmation', with:'Secret55')
 
     expect{
       click_button('Create User')
     }.to change{User.count}.by(1)
-  end
-
-  describe "who is signed in" do
-    let!(:user) { FactoryBot.create :user, username: "Reittaaja" }
-    let!(:otherguy) { FactoryBot.create :user, username: "PahaPekka" }
-    let!(:brewery) { FactoryBot.create :brewery, name:"Koff" }
-    let!(:brewery2) { FactoryBot.create :brewery, name:"Sinebrychoff" }
-    let!(:beer1) { FactoryBot.create :beer, name:"iso 3", brewery:brewery }
-    let!(:beer2) { FactoryBot.create :beer, name:"Karhu", brewery:brewery2 }
-
-    it "has zero ratings if has not rated" do
-      sign_in(username: "Reittaaja", password: "Foobar1")
-      expect(page).to have_content 'Ratings' 
-      expect(page).to have_content 'User has not yet rated!' 
-    end 
-
-    it "has favorite brewery if has rated" do
-      FactoryBot.create(:rating, score: 20, user: user, beer: beer2)
-      sign_in(username: "Reittaaja", password: "Foobar1")
-      expect(page).to have_content 'Favorite brewery' 
-      expect(page).to have_content 'Sinebrychoff' 
-    end 
-
-    it "has favorite beer if has rated" do
-      FactoryBot.create(:rating, score: 20, user: user, beer: beer1)
-      sign_in(username: "Reittaaja", password: "Foobar1")
-      expect(page).to have_content 'Favorite beer' 
-      expect(page).to have_content 'iso 3 Koff' 
-    end 
-
-    it "has ratings listed on home page if has rated" do
-      FactoryBot.create(:rating, score: 20, user: user, beer: beer1)
-      FactoryBot.create(:rating, score: 15, user: user, beer: beer2)
-      sign_in(username: "Reittaaja", password: "Foobar1")
-      expect(page).to have_content 'Ratings' 
-      expect(page).to have_content 'iso 3 20' 
-      expect(page).to have_content 'Karhu 15' 
-    end 
-
-    it "has only own ratings listed on home page if has rated" do
-      FactoryBot.create(:rating, score: 20, user: user, beer: beer1)
-      FactoryBot.create(:rating, score: 15, user: user, beer: beer2)
-      FactoryBot.create(:rating, score: 30, user: otherguy, beer: beer1)
-      FactoryBot.create(:rating, score: 40, user: otherguy, beer: beer2)
-      sign_in(username: "Reittaaja", password: "Foobar1")
-      expect(page).to have_content 'Ratings' 
-      expect(page).to have_content 'iso 3 20' 
-      expect(page).to have_content 'Karhu 15' 
-      expect(page).not_to have_content 'iso 3 30' 
-      expect(page).not_to have_content 'Karhu 40' 
-    end 
-
-    it "can destroy own rating" do
-      FactoryBot.create(:rating, score: 20, user: user, beer: beer1)
-      sign_in(username: "Reittaaja", password: "Foobar1")
-      expect(page).to have_content 'Ratings' 
-      expect(page).to have_content 'iso 3 20' 
-      click_link 'delete'
-      expect(page).not_to have_content 'iso 3 20'
-      expect(page).to have_content 'User has not yet rated!' 
-    end 
-  end
+  end  
 end
