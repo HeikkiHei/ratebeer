@@ -68,5 +68,17 @@ describe "User" do
       expect(page).not_to have_content 'iso 3 30' 
       expect(page).not_to have_content 'Karhu 40' 
     end 
+
+    it "can destroy own rating" do
+      FactoryBot.create(:rating, score: 20, user: user, beer: beer1)
+      sign_in(username: "Reittaaja", password: "Foobar1")
+      expect(page).to have_content 'Ratings' 
+      expect(page).to have_content 'iso 3 20' 
+      page.accept_alert 'Are you sure?' do
+        click_link 'delete'
+      end
+      expect(page).not_to have_content 'iso 3 20'
+      expect(page).to have_content 'User has not yet rated!' 
+    end 
   end
 end
