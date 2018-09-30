@@ -74,9 +74,7 @@ describe "User" do
       sign_in(username: "Reittaaja", password: "Foobar1")
       expect(page).to have_content 'Ratings' 
       expect(page).to have_content 'iso 3 20' 
-      page.accept_alert 'Are you sure?' do
-        click_link 'delete'
-      end
+      click_link 'delete'
       expect(page).not_to have_content 'iso 3 20'
       expect(page).to have_content 'User has not yet rated!' 
     end 
