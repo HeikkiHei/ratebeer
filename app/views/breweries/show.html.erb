@@ -5,7 +5,7 @@
 </h2>
 
 
-<p><i><%="Established in #{@brewery.year}" %></i></p>
+<p><i><%="Established at #{@brewery.year}" %></i></p>
 <p><%="Number of Beers #{@brewery.beers.count}" %></p>
 
 
@@ -21,5 +21,6 @@
 <% end %>
 </p>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) %>
+<%= link_to 'Edit', edit_brewery_path(@brewery) if current_user %>
+<%= link_to 'Destroy', @brewery, method: :delete, data: { confirm: 'Are you sure?' } if current_user %>
 
