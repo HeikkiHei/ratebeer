@@ -38,13 +38,28 @@ describe "User" do
     let!(:user) { FactoryBot.create :user, username: "Reittaaja" }
     let!(:otherguy) { FactoryBot.create :user, username: "PahaPekka" }
     let!(:brewery) { FactoryBot.create :brewery, name:"Koff" }
+    let!(:brewery2) { FactoryBot.create :brewery, name:"Sinebrychoff" }
     let!(:beer1) { FactoryBot.create :beer, name:"iso 3", brewery:brewery }
-    let!(:beer2) { FactoryBot.create :beer, name:"Karhu", brewery:brewery }
+    let!(:beer2) { FactoryBot.create :beer, name:"Karhu", brewery:brewery2 }
 
     it "has zero ratings if has not rated" do
       sign_in(username: "Reittaaja", password: "Foobar1")
       expect(page).to have_content 'Ratings' 
       expect(page).to have_content 'User has not yet rated!' 
+    end 
+
+    it "has favorite brewery if has rated" do
+      FactoryBot.create(:rating, score: 20, user: user, beer: beer2)
+      sign_in(username: "Reittaaja", password: "Foobar1")
+      expect(page).to have_content 'Favorite brewery' 
+      expect(page).to have_content 'Sinebrychoff' 
+    end 
+
+    it "has favorite beer if has rated" do
+      FactoryBot.create(:rating, score: 20, user: user, beer: beer1)
+      sign_in(username: "Reittaaja", password: "Foobar1")
+      expect(page).to have_content 'Favorite beer' 
+      expect(page).to have_content 'iso 3 Koff' 
     end 
 
     it "has ratings listed on home page if has rated" do
