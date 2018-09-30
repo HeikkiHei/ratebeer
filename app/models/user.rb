@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :ratings
   has_many :beers, through: :ratings
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :beer_clubs, through: :memberships
 
   validates :username, presence: true, uniqueness: true, length: 3..30
