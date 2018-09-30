@@ -1,14 +1,5 @@
-<p id="notice"><%= notice %></p>
+<h1>Join to a beer club</h1>
 
-<p>
-  <strong>Beer club:</strong>
-  <%= @membership.beer_club_id %>
-</p>
+<%= render 'form', membership: @membership %>
 
-<p>
-  <strong>User:</strong>
-  <%= @membership.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
 <%= link_to 'Back', memberships_path %>
