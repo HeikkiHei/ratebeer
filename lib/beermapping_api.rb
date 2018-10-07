@@ -18,6 +18,19 @@ class BeermappingApi
     end
   end
 
+  def self.single_place(bar)
+    bar = bar.downcase
+    Rails.cache.fetch(bar, expires_in: 1.week) {
+    url = "http://beermapping.com/webservice/locquery/#{key}/"
+
+    response = HTTParty.get "#{url}#{ERB::Util.url_encode(bar)}"
+    place = response.parsed_response["bmp_locations"]["location"]
+
+    return [] if place.is_a?(Hash) && place['id'].nil?
+    Place.new(place)
+    }
+  end
+
   def self.key
     raise "BEERMAPPING_APIKEY env variable not defined" if ENV['BEERMAPPING_APIKEY'].nil?
     ENV['BEERMAPPING_APIKEY']
