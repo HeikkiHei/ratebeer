@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_tag places_path do %>
+  city <%= text_field_tag :city, params[:city] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @places %>
+  <table>
+    <thead>
+        <th><%= "Name: " %></th>
+    </thead>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= link_to place.name, place_path(place.id) %></td>       
+      </tr>
+    <% end %>
+  </table>
+<% end %>
