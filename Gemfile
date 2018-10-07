@@ -56,6 +56,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'simplecov', require: false
+  gem 'webmock'
 end
 
 group :production do
@@ -65,6 +66,9 @@ end
 
 # Gem for user passwords
 gem 'bcrypt', '~> 3.1.7'
+
+# Gem for beerplaces API
+gem 'httparty'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   
   root 'breweries#index'
 
+  get 'places', to: 'places#index'
+  post 'places', to:'places#search'
+
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
   get 'signup', to: 'users#new'
