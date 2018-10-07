@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   resources :beers
   resources :breweries
   resources :ratings, only: %i[index new create destroy]
+  resources :places, only: %i[index show]
   resource :session, only: %i[new create destroy]
   
-  root 'breweries#index'
-
+  root 'breweries#index'  
+  
+  post 'places', to:'places#search'
   get 'signin', to: 'sessions#new'
-  delete 'signout', to: 'sessions#destroy'
   get 'signup', to: 'users#new'
+
+  delete 'signout', to: 'sessions#destroy'
 end
