@@ -21,13 +21,13 @@ class BeermappingApi
   def self.single_place(bar)
     bar = bar.downcase
     Rails.cache.fetch(bar, expires_in: 1.week) {
-    url = "http://beermapping.com/webservice/locquery/#{key}/"
+      url = "http://beermapping.com/webservice/locquery/#{key}/"
 
-    response = HTTParty.get "#{url}#{ERB::Util.url_encode(bar)}"
-    place = response.parsed_response["bmp_locations"]["location"]
+      response = HTTParty.get "#{url}#{ERB::Util.url_encode(bar)}"
+      place = response.parsed_response["bmp_locations"]["location"]
 
-    return [] if place.is_a?(Hash) && place['id'].nil?
-    Place.new(place)
+      return [] if place.is_a?(Hash) && place['id'].nil?
+      Place.new(place)
     }
   end
 
